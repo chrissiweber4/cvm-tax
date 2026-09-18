@@ -32,7 +32,7 @@ button,input,select,textarea{font:inherit}
 .sitehead{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 89%,transparent);backdrop-filter:blur(12px) saturate(145%);border-bottom:1px solid color-mix(in srgb,var(--line) 0%,transparent)}
 .sitehead.scrolled{border-bottom-color:var(--line);box-shadow:0 8px 28px -26px rgba(38,34,28,.7)}
 .navbar{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:650;letter-spacing:-.02em}.brand img{width:42px;height:42px;object-fit:contain}
+.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:650;letter-spacing:-.02em}.brand img{width:42px;height:42px;object-fit:contain}.brand span{display:flex;align-items:center;height:42px;line-height:1;text-transform:uppercase}
 .nav{display:flex;align-items:center;gap:3px}.nav a{font-size:14.5px;font-weight:650;color:var(--inksoft);padding:10px 13px;border-radius:999px}.nav a:hover,.nav a[aria-current="page"]{background:var(--surface2);color:var(--ink)}
 .nav .cta{background:var(--cta);color:var(--ctaink);padding-inline:19px;margin-left:6px}.nav .cta:hover{background:#17140f;color:var(--ctaink)}
 .menu{display:none;border:1px solid var(--line2);background:var(--surface);width:42px;height:42px;border-radius:11px;color:var(--ink)}

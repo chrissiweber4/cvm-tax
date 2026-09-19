@@ -440,6 +440,105 @@ h1,h2,h3,.btn{hyphens:none}
   }
 }
 
+/* Ratgeber: mehr Orientierung in längeren Fachbeiträgen. */
+.article-lead{
+  margin:22px 0 0;
+  color:var(--inksoft);
+  font-size:19px;
+  line-height:1.7;
+}
+.article-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  margin-top:18px;
+  color:var(--muted);
+  font-size:13px;
+}
+.article h3{
+  margin-top:25px;
+  font-size:19px;
+}
+.article ul,
+.article ol{
+  padding-left:22px;
+}
+.article li+li{
+  margin-top:7px;
+}
+.keypoints{
+  margin-top:30px;
+  padding:22px 24px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface);
+}
+.keypoints h2{
+  margin-top:0;
+  font-size:20px;
+}
+.keypoints ul{
+  margin-bottom:0;
+}
+.article .source-list{
+  margin-top:36px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  font-size:13px;
+}
+.article .source-list h2{
+  margin-top:0;
+  font-size:18px;
+}
+.article .source-list a{
+  color:var(--brass);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.editorial .thumb-pension{
+  background:color-mix(in srgb,var(--surface2) 82%,#c8bca9 18%);
+}
+.editorial .thumb-rent{
+  background:color-mix(in srgb,var(--surface2) 84%,#d2c1aa 16%);
+}
+.editorial .thumb-capital{
+  background:color-mix(in srgb,var(--surface2) 78%,#c5b28f 22%);
+}
+
+/* Anfrageformular: klare Hinweise für Versand und Datenschutz. */
+.privacy-note{
+  margin-top:22px;
+  padding:14px 16px;
+  border-left:3px solid var(--brass2);
+  background:var(--surface);
+  color:var(--muted);
+  font-size:13px;
+}
+.form-status{
+  display:none;
+  margin:18px 0 0;
+  padding:13px 15px;
+  border-radius:11px;
+  font-size:13.5px;
+}
+.form-status.error{
+  display:block;
+  border:1px solid #b66a62;
+  background:#fff3f1;
+  color:#783d36;
+}
+.form-trap{
+  position:absolute;
+  left:-10000px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.wizard-actions .btn[disabled]{
+  opacity:.55;
+  cursor:wait;
+}
+
 /* Home hero: one cohesive editorial image instead of a stacked contact card. */
 .hero .hero-title{
   display:flex;

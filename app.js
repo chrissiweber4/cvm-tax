@@ -46,14 +46,22 @@ if (wizard) {
   const next = wizard.querySelector('[data-next]');
   const finish = wizard.querySelector('[data-finish]');
   const success = wizard.querySelector('.success');
+  const successTitle = success?.querySelector('[data-success-title]');
+  const successText = success?.querySelector('[data-success-text]');
+  const formStatus = wizard.querySelector('[data-form-status]');
+  const endpoint = wizard.dataset.endpoint?.trim();
   let currentStep = 0;
 
   counter?.setAttribute('aria-live', 'polite');
   progress?.setAttribute('role', 'progressbar');
   progress?.setAttribute('aria-valuemin', '1');
   progress?.setAttribute('aria-valuemax', String(steps.length));
+  progress?.setAttribute('aria-label', 'Fortschritt der Anfrage');
   success?.setAttribute('aria-live', 'polite');
   success?.setAttribute('tabindex', '-1');
+  formStatus?.setAttribute('aria-live', 'polite');
+
+  if (finish) finish.textContent = endpoint ? 'Anfrage absenden' : 'E Mail Entwurf öffnen';
 
   const show = (moveFocus = false) => {
     steps.forEach((step, index) => {
@@ -113,13 +121,39 @@ if (wizard) {
       show(true);
     }
   });
-  finish?.addEventListener('click', () => {
+  const requestPayload = () => {
+    const formData = new FormData(wizard);
+    const extras = formData.getAll('extras');
+    formData.delete('extras');
+    formData.set('Weitere Einkünfte', extras.length ? extras.join(', ') : 'keine');
+    formData.set('Steuerjahr', formData.get('year') || 'nicht angegeben');
+    formData.set('Situation', formData.get('type') || 'nicht angegeben');
+    formData.set('Veranlagung', formData.get('assessment') || 'nicht angegeben');
+    formData.set('Name', formData.get('name') || 'nicht angegeben');
+    formData.set('email', formData.get('email') || 'nicht angegeben');
+    formData.set('Telefon', formData.get('phone') || 'nicht angegeben');
+    formData.set('Nachricht', formData.get('message') || 'keine');
+    ['year', 'type', 'assessment', 'name', 'phone', 'message'].forEach((name) => formData.delete(name));
+    return formData;
+  };
+
+  const showSuccess = (title, text) => {
+    wizard.querySelectorAll('.wizard-step,.wizard-actions,.wizard-head,.wizard-progress').forEach((element) => {
+      element.hidden = true;
+    });
+    if (successTitle) successTitle.textContent = title;
+    if (successText) successText.textContent = text;
+    success?.classList.add('show');
+    success?.focus();
+  };
+
+  finish?.addEventListener('click', async () => {
     if (!validate()) return;
     const formData = new FormData(wizard);
     const value = (name) => formData.get(name) || 'nicht angegeben';
     const extras = formData.getAll('extras');
     const body = [
-      'Neue Anfrage über CVM Tax',
+      'Neue Anfrage über CVM TAX',
       '',
       `Steuerjahr: ${value('year')}`,
       `Situation: ${value('type')}`,
@@ -133,12 +167,40 @@ if (wizard) {
       value('message'),
     ].join('\n');
 
-    window.location.href = `mailto:info@cvm-tax.de?subject=${encodeURIComponent('Anfrage Einkommensteuererklärung')}&body=${encodeURIComponent(body)}`;
-    wizard.querySelectorAll('.wizard-step,.wizard-actions,.wizard-head,.wizard-progress').forEach((element) => {
-      element.hidden = true;
-    });
-    success?.classList.add('show');
-    success?.focus();
+    if (!endpoint) {
+      window.location.href = `mailto:info@cvm-tax.de?subject=${encodeURIComponent('Anfrage Einkommensteuererklärung')}&body=${encodeURIComponent(body)}`;
+      showSuccess('E Mail Entwurf vorbereitet', 'Ihr E Mail Programm wurde geöffnet. Bitte senden Sie die vorbereitete Nachricht dort noch ab.');
+      return;
+    }
+
+    finish.disabled = true;
+    finish.textContent = 'Wird gesendet …';
+    if (formStatus) {
+      formStatus.textContent = '';
+      formStatus.classList.remove('error');
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: requestPayload(),
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json().catch(() => ({ success: false }));
+      if (!response.ok || result.success !== true) {
+        throw new Error(result.error_msg || result.error || `Formularversand fehlgeschlagen: ${response.status}`);
+      }
+      showSuccess('Anfrage erfolgreich gesendet', 'Vielen Dank. Wir prüfen Ihre Angaben und melden uns persönlich bei Ihnen.');
+      wizard.reset();
+    } catch (error) {
+      if (formStatus) {
+        formStatus.textContent = 'Die Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns eine E Mail.';
+        formStatus.classList.add('error');
+        formStatus.focus();
+      }
+      finish.disabled = false;
+      finish.textContent = 'Erneut versuchen';
+    }
   });
 
   const extraChecks = [...wizard.querySelectorAll('input[name="extras"]')];

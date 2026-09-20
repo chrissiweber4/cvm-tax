@@ -215,3 +215,45 @@ if (wizard) {
 
   show();
 }
+
+const contactForm = document.querySelector('[data-contact-form]');
+if (contactForm) {
+  const submit = contactForm.querySelector('[type="submit"]');
+  const status = contactForm.querySelector('[data-contact-status]');
+  const success = contactForm.querySelector('[data-contact-success]');
+  const endpoint = contactForm.dataset.endpoint?.trim();
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = 'Wird gesendet …';
+    status.textContent = '';
+    status.classList.remove('error');
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json().catch(() => ({ success: false }));
+      if (!response.ok || result.success !== true) throw new Error(result.error_msg || result.error || 'Versand fehlgeschlagen');
+      contactForm.querySelectorAll('.wizard-step,.wizard-actions,.wizard-head').forEach((element) => { element.hidden = true; });
+      success.classList.add('show');
+      success.setAttribute('tabindex', '-1');
+      success.focus();
+      contactForm.reset();
+    } catch (error) {
+      status.textContent = 'Die Nachricht konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns eine E Mail.';
+      status.classList.add('error');
+      status.focus();
+      submit.disabled = false;
+      submit.textContent = 'Erneut versuchen';
+    }
+  });
+}

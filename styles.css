@@ -75,6 +75,34 @@ h1,h2,h3,.btn{hyphens:none}
 .menu{width:auto;min-width:64px;padding:0 14px;font-size:14px;font-weight:750}
 .option:focus-within{border-color:var(--brass2);box-shadow:0 0 0 3px color-mix(in srgb,var(--brass2) 16%,transparent)}
 .wizard-step h2:focus{outline:none}
+
+/* Local price check */
+.price-check .wizard-progress span{width:12.5%}
+.price-result{margin-top:20px;border:1px solid var(--line);border-radius:16px;background:var(--paper);overflow:hidden}
+.price-total{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px;border-bottom:1px solid var(--line)}
+.price-total span{font-size:13px;color:var(--muted);font-weight:750}
+.price-total strong{font-size:29px;color:var(--ink)}
+.price-breakdown{padding:8px 18px}
+.price-breakdown>div{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid var(--line)}
+.price-breakdown>div:last-child{border-bottom:0}
+.price-breakdown span{color:var(--inksoft);font-size:14px}
+.price-breakdown strong{font-size:14px}
+.review-notice{margin-top:16px;padding:15px 16px;border:1px solid var(--brass2);border-radius:13px;background:var(--surface2)}
+.review-notice p{margin-top:6px;color:var(--inksoft);font-size:13.5px}
+.decline-notice{margin-top:20px;padding:18px;border:1px solid #b56b5f;border-radius:13px;background:#fff6f3}
+.decline-notice strong{color:#7d342d}
+.decline-notice p{margin-top:7px;color:var(--inksoft);font-size:14px}
+.price-disclaimer{margin-top:16px!important;font-size:12.5px!important;color:var(--muted)!important}
+.summarybox.is-muted{color:var(--muted)}
+.price-check [hidden]{display:none!important}
+.contact-form .wizard-step{display:block}
+.contact-form [hidden]{display:none!important}
+.contact-actions{align-items:center}
+
+@media(max-width:520px){
+  .price-total{align-items:flex-start;flex-direction:column;gap:7px}
+  .price-breakdown>div{align-items:flex-start}
+}
 .field input,.field select,.field textarea{min-height:48px}
 .field textarea{min-height:120px}
 .consent a{text-decoration:underline;text-underline-offset:3px}

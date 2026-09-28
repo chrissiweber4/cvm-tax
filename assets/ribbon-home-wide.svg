@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 2350" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sage" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#E7EEDF"/>
+      <stop offset=".44" stop-color="#C7D8BE"/>
+      <stop offset="1" stop-color="#DDE7D4"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" x2="1" y1="0" y2="0">
+      <stop stop-color="#F9F8F1" stop-opacity="0"/>
+      <stop offset=".55" stop-color="#FBFAF5" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#F9F8F1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M1510 -250 C1090 45 1610 305 1290 560 C1090 770 280 595 155 965 C45 1260 885 1115 1245 1380 C1610 1650 940 1725 420 1840 C-120 1960 80 2240 590 2420" fill="none" stroke="#AABFA2" stroke-opacity=".08" stroke-width="230" stroke-linecap="round"/>
+  <path d="M1510 -250 C1090 45 1610 305 1290 560 C1090 770 280 595 155 965 C45 1260 885 1115 1245 1380 C1610 1650 940 1725 420 1840 C-120 1960 80 2240 590 2420" fill="none" stroke="url(#sage)" stroke-opacity=".66" stroke-width="178" stroke-linecap="round"/>
+  <path d="M1510 -250 C1090 45 1610 305 1290 560 C1090 770 280 595 155 965 C45 1260 885 1115 1245 1380 C1610 1650 940 1725 420 1840 C-120 1960 80 2240 590 2420" fill="none" stroke="url(#light)" stroke-opacity=".35" stroke-width="54" stroke-linecap="round"/>
+</svg>

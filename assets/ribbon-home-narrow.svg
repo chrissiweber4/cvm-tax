@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 2900" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="sage" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#E7EEDF"/>
+      <stop offset=".48" stop-color="#BFD2B6"/>
+      <stop offset="1" stop-color="#DEE8D6"/>
+    </linearGradient>
+  </defs>
+  <path d="M550 -180 C290 75 560 245 438 470 C320 695 42 635 -42 925 C-130 1225 460 1090 505 1390 C550 1680 42 1640 -40 1960 C-105 2270 485 2230 504 2580 C518 2810 350 2960 110 3110" fill="none" stroke="#9FB798" stroke-opacity=".08" stroke-width="186" stroke-linecap="round"/>
+  <path d="M550 -180 C290 75 560 245 438 470 C320 695 42 635 -42 925 C-130 1225 460 1090 505 1390 C550 1680 42 1640 -40 1960 C-105 2270 485 2230 504 2580 C518 2810 350 2960 110 3110" fill="none" stroke="url(#sage)" stroke-opacity=".68" stroke-width="148" stroke-linecap="round"/>
+  <path d="M550 -180 C290 75 560 245 438 470 C320 695 42 635 -42 925 C-130 1225 460 1090 505 1390 C550 1680 42 1640 -40 1960 C-105 2270 485 2230 504 2580 C518 2810 350 2960 110 3110" fill="none" stroke="#F9FAF5" stroke-opacity=".18" stroke-width="38" stroke-linecap="round"/>
+</svg>

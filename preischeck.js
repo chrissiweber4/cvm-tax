@@ -184,7 +184,8 @@ if (priceCheck) {
     if (moveFocus) {
       const heading = steps[currentStep]?.querySelector('h2');
       heading?.setAttribute('tabindex', '-1');
-      heading?.focus();
+      heading?.focus({ preventScroll: true });
+      priceCheck.scrollIntoView({ block: 'start', behavior: 'instant' });
     }
   };
 

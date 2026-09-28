@@ -257,3 +257,77 @@ if (contactForm) {
     }
   });
 }
+
+// An unavailable optional team image must never leave a reserved blank panel.
+const merlinImage = document.querySelector('.merlin img');
+const hideUnavailableMerlin = () => merlinImage?.closest('.merlin')?.classList.add('image-unavailable');
+merlinImage?.addEventListener('error', hideUnavailableMerlin);
+if (merlinImage?.complete && !merlinImage.naturalWidth) hideUnavailableMerlin();
+
+// The content remains visible if scripting or motion support is unavailable.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const benefits = document.querySelector('.home-benefits');
+  if (benefits) {
+    benefits.classList.add('benefits-gated');
+    benefits.querySelectorAll('.home-benefit').forEach((card, index) => {
+      card.style.setProperty('--benefit-delay', `${index * 100}ms`);
+    });
+
+    const checkBenefits = () => {
+      const top = benefits.getBoundingClientRect().top;
+      if (window.scrollY <= 24 || top > window.innerHeight * 0.9) {
+        benefits.classList.remove('benefits-released');
+      } else if (top < window.innerHeight * 0.78) {
+        benefits.classList.add('benefits-released');
+      }
+    };
+
+    window.addEventListener('scroll', checkBenefits, { passive: true });
+    window.addEventListener('resize', checkBenefits);
+    benefits.addEventListener('focusin', () => benefits.classList.add('benefits-released'));
+    checkBenefits();
+  }
+
+  const revealGroups = [
+    '.home-services__intro',
+    '.home-audiences > a',
+    '.home-prices__heading',
+    '.home-section-lead',
+    '.home-price-card',
+    '.home-process__heading',
+    '.home-step',
+    '.home-close__inner',
+    '.leistungen-page .service-list',
+    '.preise-page .price',
+    '.kanzlei-page .person-card',
+    '.kanzlei-page .merlin',
+    '.ratgeber-page .post',
+  ];
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) entry.target.classList.remove('motion-visible');
+      else if (entry.intersectionRatio >= 0.12) entry.target.classList.add('motion-visible');
+    });
+  }, { threshold: [0, 0.12], rootMargin: '0px 0px -6% 0px' });
+
+  revealGroups.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      element.style.setProperty('--motion-delay', `${Math.min(index, 3) * 65}ms`);
+      element.classList.add('motion-pending');
+      revealObserver.observe(element);
+    });
+  });
+
+  const process = document.querySelector('.home-process');
+  if (process) {
+    process.classList.add('motion-line-ready');
+    const lineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) entry.target.classList.remove('motion-line-visible');
+        else if (entry.intersectionRatio >= 0.16) entry.target.classList.add('motion-line-visible');
+      });
+    }, { threshold: [0, 0.16] });
+    lineObserver.observe(process);
+  }
+}

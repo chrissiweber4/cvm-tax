@@ -1,17 +1,7 @@
-# CVM TAX Website
+# CVM TAX · Sage Glacier
 
-Dies ist die statische Website von CVM TAX. Sie kann ohne Buildprozess über GitHub Pages veröffentlicht werden.
+Freigegebene Websitegestaltung vom 20.10.2026. Statische Website ohne Build. Form.taxi-Anbindung mit bestätigtem Zustelltest an info@cvm-tax.de.
 
-## Veröffentlichung über GitHub Pages
+Impressum und Datenschutz enthalten noch gekennzeichnete Entwürfe. Fehlende Angaben werden nachgereicht. Suchmaschinenindexierung bleibt bis zur Fertigstellung deaktiviert.
 
-1. Ein neues GitHub Repository anlegen.
-2. Den vollständigen Inhalt dieses Ordners in das Repository hochladen.
-3. In GitHub `Settings`, anschließend `Pages` öffnen.
-4. Unter `Build and deployment` die Option `Deploy from a branch` wählen.
-5. Als Branch `main` und als Ordner `/ (root)` auswählen und speichern.
-
-Die Startseite ist `index.html`. Styles, JavaScript und Bilder liegen bereits in den passenden relativen Pfaden.
-
-## Eigene Domain
-
-Eine eigene Domain kann später in den GitHub Pages Einstellungen hinterlegt werden. Danach sollten die Domainangaben in `sitemap.xml` und `robots.txt` geprüft und bei Bedarf angepasst werden.
+Vorheriger Stand: Archivbranch archive/website-vor-sage-glacier-2026-10-20, Commit 4d84f2a0b76ef4323f2824b04062fcf3741a6e48.

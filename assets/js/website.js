@@ -279,7 +279,7 @@ document.addEventListener('click',event=>{if(!siteTree.hidden&&!siteTree.contain
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!siteTree.hidden){event.preventDefault();toggleTree(false,true);}});
 siteTree.addEventListener('click',event=>{if(event.target.closest('a'))toggleTree(false);});
 
-/* Fristenhinweis: einmal pro Sitzung, nach 30 sichtbaren Sekunden, ohne Unterbrechung des Preischecks. */
+/* Fristenhinweis: einmal pro Sitzung, nach 20 sichtbaren Sekunden, ohne Unterbrechung des Preischecks. */
 (()=>{
  const popup=document.querySelector('#deadlineDialog');
  if(!popup||Date.now()>=new Date(2027,2,2).getTime())return;
@@ -299,7 +299,7 @@ siteTree.addEventListener('click',event=>{if(event.target.closest('a'))toggleTre
   if(suppressed){clearInterval(timer);return;}
   if(document.hidden)return;
   elapsed+=1000;
-  if(elapsed<30000||document.querySelector('dialog[open]')||document.querySelector('#site-tree:not([hidden])'))return;
+  if(elapsed<20000||document.querySelector('dialog[open]')||document.querySelector('#site-tree:not([hidden])'))return;
   if(form){const r=form.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)return;}
   if(document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'))return;
   remember();clearInterval(timer);popup.showModal();

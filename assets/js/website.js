@@ -82,15 +82,15 @@
     }
 
     function validationIssue(step){
-      if(step.dataset.step==='income'&&selectedValues('income').length===0)return {field:step.querySelector('[name="income"]'),message:'Bitte wählen Sie Ihre weiteren Einkünfte oder „Keine weiteren Einkünfte“.'};
-      if(step.dataset.step==='special'&&selectedValues('special').length===0)return {field:step.querySelector('[name="special"]'),message:'Bitte wählen Sie einen Sachverhalt oder „Nein, keine besonderen Sachverhalte“.'};
+      if(step.dataset.step==='income'&&selectedValues('income').length===0)return {field:step.querySelector('[name="income"]'),message:'Bitte wähle deine weiteren Einkünfte oder „Keine weiteren Einkünfte“.'};
+      if(step.dataset.step==='special'&&selectedValues('special').length===0)return {field:step.querySelector('[name="special"]'),message:'Bitte wähle einen Sachverhalt oder „Nein, keine besonderen Sachverhalte“.'};
       const required=[...step.querySelectorAll('[required]')];
       const radioNames=[...new Set(required.filter(field=>field.type==='radio').map(field=>field.name))];
-      for(const name of radioNames){if(!step.querySelector(`[name="${name}"]:checked`))return {field:step.querySelector(`[name="${name}"]`),message:'Bitte wählen Sie eine Antwort aus.'};}
+      for(const name of radioNames){if(!step.querySelector(`[name="${name}"]:checked`))return {field:step.querySelector(`[name="${name}"]`),message:'Bitte wähle eine Antwort aus.'};}
       for(const field of required.filter(field=>field.type!=='radio')){
-        if((field.type!=='checkbox'&&!field.value.trim())||!field.checkValidity())return {field,message:field.type==='email'?'Bitte geben Sie eine gültige E-Mail-Adresse ein.':field.type==='checkbox'?'Bitte bestätigen Sie die Kenntnisnahme der Datenschutzhinweise.':'Bitte geben Sie Ihren Namen ein.'};
+        if((field.type!=='checkbox'&&!field.value.trim())||!field.checkValidity())return {field,message:field.type==='email'?'Bitte gib eine gültige E-Mail-Adresse ein.':field.type==='checkbox'?'Bitte bestätige die Kenntnisnahme der Datenschutzhinweise.':'Bitte gib deinen Namen ein.'};
       }
-      if(step.dataset.step==='rental'&&!rentalCount.value)return {field:rentalCount,message:'Bitte wählen Sie die Anzahl der Vermietungsobjekte.'};
+      if(step.dataset.step==='rental'&&!rentalCount.value)return {field:rentalCount,message:'Bitte wähle die Anzahl der Vermietungsobjekte.'};
       return null;
     }
     function validateStep(step=questions[current]){
@@ -130,7 +130,7 @@
       summaryRow(contact,'Name',document.querySelector('#priceName').value.trim(),'contact','#priceName');
       summaryRow(contact,'E-Mail',document.querySelector('#priceEmail').value.trim(),'contact','#priceEmail');
       summaryRow(contact,'Telefon',document.querySelector('#pricePhone').value.trim()||'Nicht angegeben','contact','#pricePhone');
-      summaryRow(contact,'Ihr Hinweis',document.querySelector('#priceMessage').value.trim()||'Nicht angegeben','contact','#priceMessage');
+      summaryRow(contact,'Dein Hinweis',document.querySelector('#priceMessage').value.trim()||'Nicht angegeben','contact','#priceMessage');
     }
     priceCheck.addEventListener('input',event=>{const step=event.target.closest('.question');if(step)clearValidation(step);});
 
@@ -175,7 +175,7 @@
       renderResult();
       const status=document.querySelector('#formStatus');
       const endpoint=priceCheck.dataset.endpoint;
-      if(endpoint!=='https://form.taxi/s/lyr0k88l'){status.textContent='Der Anfrageversand ist nicht eingerichtet. Bitte schreiben Sie an info@cvm-tax.de.';status.classList.add('error');status.focus();return;}
+      if(endpoint!=='https://form.taxi/s/lyr0k88l'){status.textContent='Der Anfrageversand ist nicht eingerichtet. Bitte schreibe an info@cvm-tax.de.';status.classList.add('error');status.focus();return;}
       if(!requestId)requestId='CVM-'+crypto.randomUUID();
       const payload=new FormData();
       const values={
@@ -205,7 +205,7 @@
       sending=true;submitRequest.disabled=true;back.disabled=true;
       document.querySelector('#questions').inert=true;
       priceCheck.setAttribute('aria-busy','true');
-      submitRequest.textContent='Wird gesendet …';status.textContent='Ihre Anfrage wird übermittelt …';status.classList.remove('error');
+      submitRequest.textContent='Wird gesendet …';status.textContent='Deine Anfrage wird übermittelt …';status.classList.remove('error');
       const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),45000);
       try{
         const response=await fetch(endpoint,{method:'POST',body:payload,headers:{Accept:'application/json'},signal:controller.signal,credentials:'omit'});
@@ -215,7 +215,7 @@
         priceCheck.querySelectorAll('.question,.calc-nav,.wizard-head,.calc-progress,.form-status').forEach(element=>element.hidden=true);
         const success=document.querySelector('#success');success.classList.add('show');success.focus();
       }catch(error){
-        status.textContent='Der Versand konnte nicht bestätigt werden. Ihre Angaben bleiben erhalten. Bitte prüfen Sie vor einem erneuten Versuch, ob bereits eine Bestätigung vorliegt, oder schreiben Sie an info@cvm-tax.de.';
+        status.textContent='Der Versand konnte nicht bestätigt werden. Deine Angaben bleiben erhalten. Bitte prüfe vor einem erneuten Versuch, ob bereits eine Bestätigung vorliegt, oder schreibe an info@cvm-tax.de.';
         status.classList.add('error');status.focus();
       }finally{
         clearTimeout(timeout);sending=false;submitRequest.disabled=false;back.disabled=false;
@@ -260,7 +260,7 @@ showStep();
     document.querySelector('#closeArticle').addEventListener('click',()=>articleDialog.close());
     articleContent.addEventListener('click',event=>{if(event.target.closest('[data-close-article]'))articleDialog.close()});
     articleDialog.addEventListener('click',event=>{if(event.target===articleDialog)articleDialog.close()});
-    const legal={"impressum": "<p class=\"section-kicker\">Rechtlicher Entwurf · noch unvollständig</p><h2 id=\"legalDialogTitle\">Impressum</h2><h3>Anbieter</h3><p>CVM TAX GbR<br>Schillinger Weg 35<br>54421 Reinsfeld</p><h3>Vertreten durch</h3><p>Christopher Weber, Steuerberater<br>Vanessa Degner, Steuerberaterin</p><h3>Kontakt</h3><p>E-Mail: <a href=\"mailto:info@cvm-tax.de\">info@cvm-tax.de</a><br>Telefon: noch zu ergänzen</p><h3>Zuständige Steuerberaterkammer</h3><p>Steuerberaterkammer Rheinland-Pfalz<br>Hölderlinstraße 1<br>55131 Mainz<br><a href=\"https://www.sbk-rlp.de/\" target=\"_blank\" rel=\"noopener\">www.sbk-rlp.de</a></p><h3>Berufsbezeichnungen und Berufsrecht</h3><p>Steuerberater / Steuerberaterin. Die Berufsbezeichnungen wurden in Deutschland verliehen.</p><p>Steuerberatungsgesetz (StBerG), Durchführungsverordnung zum Steuerberatungsgesetz (DVStB), Berufsordnung der Bundessteuerberaterkammer (BOStB) und Steuerberatervergütungsverordnung (StBVV). Die aktuellen Fassungen und Verlinkungen werden vor Veröffentlichung ergänzt.</p><h3>Berufshaftpflichtversicherung</h3><p>Allianz. Die genaue Versicherergesellschaft, ihre Anschrift und der räumliche Geltungsbereich gemäß Versicherungspolice sind noch zu ergänzen.</p><p>Ein Eintrag im Gesellschaftsregister besteht nicht. Eine Umsatzsteuer-Identifikationsnummer ist nach Angabe der Kanzlei nicht vorhanden.</p><p>Dieser Entwurf ist noch nicht zur Veröffentlichung freigegeben.</p>", "datenschutz": "<p class=\"section-kicker\">Rechtlicher Entwurf · noch unvollständig</p><h2 id=\"legalDialogTitle\">Datenschutz</h2><h3>Verantwortlicher</h3><p>CVM TAX GbR<br>Schillinger Weg 35<br>54421 Reinsfeld<br>E-Mail: <a href=\"mailto:info@cvm-tax.de\">info@cvm-tax.de</a><br>Vertreten durch Christopher Weber und Vanessa Degner.</p><h3>Anfrageversand über Form.taxi</h3><p>Beim Absenden Ihrer Anfrage werden Ihre Angaben an Form.taxi zur Bearbeitung durch CVM TAX übermittelt. Empfängerpostfach der Kanzlei ist info@cvm-tax.de. Bitte übermitteln Sie keine Steuerunterlagen, Steueridentifikationsnummern oder Zugangsdaten.</p><h3>Für den Livebetrieb bestätigt</h3><p>Die öffentliche Website soll weiterhin über GitHub Pages bereitgestellt werden. Für die Bearbeitung von Beratungsanfragen soll weiterhin Form.taxi eingesetzt werden. Der Anfrageversand über Form.taxi ist in dieser Arbeitskopie angebunden. Die tatsächliche Zustellung wird gesondert geprüft.</p><h3>Unterlagenübergabe</h3><p>Nach der Mandatsannahme erhalten Mandanten per E-Mail einen Link zur eigenen Web-App der Kanzlei. Für deren Datenverarbeitung sind gesonderte Datenschutzhinweise vorzubereiten. Bitte keine Steuerunterlagen über das öffentliche Anfrageformular übermitteln.</p><h3>Vor Veröffentlichung zu vervollständigen</h3><p>Die vollständigen Hinweise zu Hosting, Formularverarbeitung, E-Mail-Dienst, Rechtsgrundlagen, Empfängern, möglichen Drittlandübermittlungen, Aufbewahrung, Betroffenenrechten und zuständiger Aufsichtsbehörde werden anhand der tatsächlichen Konfiguration geprüft und ergänzt. Dieser Entwurf ist noch nicht zur Veröffentlichung freigegeben.</p>"};
+    const legal={"impressum": "<p class=\"section-kicker\">Rechtlicher Entwurf · noch unvollständig</p><h2 id=\"legalDialogTitle\">Impressum</h2><h3>Anbieter</h3><p>CVM TAX GbR<br>Schillinger Weg 35<br>54421 Reinsfeld</p><h3>Vertreten durch</h3><p>Christopher Weber, Steuerberater<br>Vanessa Degner, Steuerberaterin</p><h3>Kontakt</h3><p>E-Mail: <a href=\"mailto:info@cvm-tax.de\">info@cvm-tax.de</a><br>Telefon: noch zu ergänzen</p><h3>Zuständige Steuerberaterkammer</h3><p>Steuerberaterkammer Rheinland-Pfalz<br>Hölderlinstraße 1<br>55131 Mainz<br><a href=\"https://www.sbk-rlp.de/\" target=\"_blank\" rel=\"noopener\">www.sbk-rlp.de</a></p><h3>Berufsbezeichnungen und Berufsrecht</h3><p>Steuerberater / Steuerberaterin. Die Berufsbezeichnungen wurden in Deutschland verliehen.</p><p>Steuerberatungsgesetz (StBerG), Durchführungsverordnung zum Steuerberatungsgesetz (DVStB), Berufsordnung der Bundessteuerberaterkammer (BOStB) und Steuerberatervergütungsverordnung (StBVV). Die aktuellen Fassungen und Verlinkungen werden vor Veröffentlichung ergänzt.</p><h3>Berufshaftpflichtversicherung</h3><p>Allianz. Die genaue Versicherergesellschaft, ihre Anschrift und der räumliche Geltungsbereich gemäß Versicherungspolice sind noch zu ergänzen.</p><p>Ein Eintrag im Gesellschaftsregister besteht nicht. Eine Umsatzsteuer-Identifikationsnummer ist nach Angabe der Kanzlei nicht vorhanden.</p><p>Dieser Entwurf ist noch nicht zur Veröffentlichung freigegeben.</p>", "datenschutz": "<p class=\"section-kicker\">Rechtlicher Entwurf · noch unvollständig</p><h2 id=\"legalDialogTitle\">Datenschutz</h2><h3>Verantwortlicher</h3><p>CVM TAX GbR<br>Schillinger Weg 35<br>54421 Reinsfeld<br>E-Mail: <a href=\"mailto:info@cvm-tax.de\">info@cvm-tax.de</a><br>Vertreten durch Christopher Weber und Vanessa Degner.</p><h3>Anfrageversand über Form.taxi</h3><p>Beim Absenden deiner Anfrage werden deine Angaben an Form.taxi zur Bearbeitung durch CVM TAX übermittelt. Empfängerpostfach der Kanzlei ist info@cvm-tax.de. Bitte übermittelst du keine Steuerunterlagen, Steueridentifikationsnummern oder Zugangsdaten.</p><h3>Für den Livebetrieb bestätigt</h3><p>Die öffentliche Website soll weiterhin über GitHub Pages bereitgestellt werden. Für die Bearbeitung von Beratungsanfragen soll weiterhin Form.taxi eingesetzt werden. Der Anfrageversand über Form.taxi ist in dieser Arbeitskopie angebunden. Die tatsächliche Zustellung wird gesondert geprüft.</p><h3>Unterlagenübergabe</h3><p>Nach der Mandatsannahme erhalten Mandanten per E-Mail einen Link zur eigenen Web-App der Kanzlei. Für deren Datenverarbeitung sind gesonderte Datenschutzhinweise vorzubereiten. Bitte keine Steuerunterlagen über das öffentliche Anfrageformular übermitteln.</p><h3>Vor Veröffentlichung zu vervollständigen</h3><p>Die vollständigen Hinweise zu Hosting, Formularverarbeitung, E-Mail-Dienst, Rechtsgrundlagen, Empfängern, möglichen Drittlandübermittlungen, Aufbewahrung, Betroffenenrechten und zuständiger Aufsichtsbehörde werden anhand der tatsächlichen Konfiguration geprüft und ergänzt. Dieser Entwurf ist noch nicht zur Veröffentlichung freigegeben.</p>"};
     document.querySelectorAll('[data-modal]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector('#legalContent').innerHTML=legal[a.dataset.modal];document.querySelector('#legalDialog').showModal()}));document.querySelector('#closeDialog').addEventListener('click',()=>document.querySelector('#legalDialog').close());
     document.querySelector('#year').textContent=new Date().getFullYear();
   

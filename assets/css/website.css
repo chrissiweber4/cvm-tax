@@ -8627,3 +8627,12 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 #cvm-design-preview #leistungen .service-details li strong{font-weight:600;}
 #cvm-design-preview #leistungen .service-crossborder{color:var(--accent);}
 #cvm-design-preview #leistungen .service-details-content>p{margin-top:18px;font-size:.9rem;}
+
+/* Ratgeber-Hinweise im gleichen neutralen Glasmaterial wie die Kanzleikacheln. */
+#cvm-design-preview #articleDialog :is(.keypoints,.disclaimer){
+ background:rgba(255,255,255,.38);
+ border:1px solid rgba(51,121,108,.24);
+ border-radius:14px;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+ color:#252a30;
+}

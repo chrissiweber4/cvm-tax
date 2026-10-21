@@ -8710,3 +8710,14 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
  #cvm-design-preview #top>#kanzlei .cvm-credentials h3{font-size:1.1rem;}
  #cvm-design-preview #top>#kanzlei .cvm-credentials p{font-size:.9rem;}
 }
+
+/* Qualifikationen: kleine begleitende Icons, mehr Raum fuer den Text. */
+#cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:36px;height:36px;flex-basis:36px;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials li{gap:20px;}
+@media(max-width:1000px){
+ #cvm-design-preview #top>#kanzlei .cvm-credentials li{grid-template-columns:36px minmax(0,1fr);gap:20px;}
+}
+@media(max-width:400px){
+ #cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:30px;height:30px;flex-basis:30px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credentials li{grid-template-columns:30px minmax(0,1fr);gap:16px;}
+}

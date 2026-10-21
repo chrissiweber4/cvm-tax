@@ -8631,3 +8631,7 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
  box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
  color:#252a30;
 }
+
+/* Leistungszeilen ohne zusaetzliche Kategorie-Badges. */
+#cvm-design-preview #leistungen .service{grid-template-columns:70px minmax(0,1fr);}
+@media(max-width:759px){#cvm-design-preview #leistungen .service{grid-template-columns:24px minmax(0,1fr);}}

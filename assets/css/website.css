@@ -8610,3 +8610,6 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
   border-radius:14px;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
 }
+
+/* Ablaufkacheln: Inhalte unter den Nummern statt am Kartenende ausrichten. */
+#cvm-design-preview #top > #so-gehts .step{justify-content:flex-start;}

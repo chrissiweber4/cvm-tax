@@ -8635,3 +8635,19 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 /* Leistungszeilen ohne zusaetzliche Kategorie-Badges. */
 #cvm-design-preview #leistungen .service{grid-template-columns:70px minmax(0,1fr);}
 @media(max-width:759px){#cvm-design-preview #leistungen .service{grid-template-columns:24px minmax(0,1fr);}}
+
+/* Zeitversetzter Fristenhinweis im bestehenden Sage-Glacier-Glasdesign. */
+#cvm-design-preview .deadline-dialog{box-sizing:border-box;width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:0;overflow:auto;border:1px solid rgba(255,255,255,.85);border-radius:28px;background:linear-gradient(135deg,rgba(246,250,249,.97),rgba(228,243,238,.94));color:#252a30;box-shadow:0 24px 80px rgba(22,79,73,.2),inset 0 1px 0 #fff;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}
+#cvm-design-preview .deadline-dialog::backdrop{background:rgba(22,50,46,.32);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+#cvm-design-preview .deadline-content{padding:clamp(28px,5vw,48px);}
+#cvm-design-preview .deadline-content .section-kicker{padding-right:40px;margin:0 0 18px;color:#164F49;}
+#cvm-design-preview .deadline-content h2{font-size:clamp(2rem,5vw,3rem);line-height:1.1;letter-spacing:-.04em;margin:0 0 22px;color:#252a30;}
+#cvm-design-preview .deadline-content p{font-size:1rem;line-height:1.65;color:#48515b;overflow-wrap:anywhere;}
+#cvm-design-preview .deadline-date{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding:18px 22px;margin:22px 0;border:1px solid rgba(51,121,108,.24);border-radius:14px;background:rgba(255,255,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.65);}
+#cvm-design-preview .deadline-date span{font-size:.9rem;color:#48515b;}
+#cvm-design-preview .deadline-date strong{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:600;letter-spacing:-.03em;color:#33796C;}
+#cvm-design-preview .deadline-close{position:absolute;right:16px;top:16px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid rgba(22,79,73,.2);border-radius:50%;background:rgba(255,255,255,.5);color:#164F49;font-family:inherit;font-size:28px;font-weight:400;line-height:1;cursor:pointer;}
+#cvm-design-preview .deadline-cta{display:inline-flex;margin-top:12px;white-space:normal;text-align:center;background:#164F49;color:#F6FAF9;}
+#cvm-design-preview .deadline-content .deadline-note{font-size:.78rem;line-height:1.55;margin:20px 0 0;}
+#cvm-design-preview .deadline-dialog :is(button,a):focus-visible{outline:3px solid #33796C;outline-offset:3px;}
+@media(max-width:480px){#cvm-design-preview .deadline-content{padding:28px 24px;}#cvm-design-preview .deadline-cta{display:flex;justify-content:center;}}

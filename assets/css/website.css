@@ -8721,3 +8721,41 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
  #cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:30px;height:30px;flex-basis:30px;}
  #cvm-design-preview #top>#kanzlei .cvm-credentials li{grid-template-columns:30px minmax(0,1fr);gap:16px;}
 }
+
+/* Fristen-Popup nach freigegebenen Kalender-Vorlagen: Desktop Bildflaeche, mobil zentriert. */
+#cvm-design-preview .deadline-dialog{width:min(1120px,calc(100% - 48px));max-height:calc(100dvh - 32px);border-radius:28px;overflow:auto;background:linear-gradient(120deg,rgba(255,255,255,.98),rgba(237,250,245,.97));}
+#cvm-design-preview .deadline-layout{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,1fr);}
+#cvm-design-preview .deadline-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:clamp(32px,4vw,56px);}
+#cvm-design-preview .deadline-kicker{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;font-weight:650;color:#164F49;margin:0 0 28px;}
+#cvm-design-preview #deadlineTitle{font-size:clamp(2.5rem,5.7vw,4.8rem);font-weight:750;line-height:1.04;letter-spacing:-.04em;color:#151d24;margin:0 0 32px;}
+#cvm-design-preview #deadlineTitle>span{color:#15594e;}
+#cvm-design-preview #deadlineCopy{font-size:clamp(1rem,1.65vw,1.2rem);line-height:1.55;margin:0;color:#252a30;}
+#cvm-design-preview .deadline-mobile-copy,#cvm-design-preview .deadline-mobile-date{display:none;}
+#cvm-design-preview .deadline-cta{display:flex;align-items:center;justify-content:space-between;align-self:flex-start;justify-self:auto;gap:22px;margin-top:34px;min-height:64px;max-width:100%;padding:10px 10px 10px 26px;border-radius:999px;background:#15594e;color:#fff;font-size:1.1rem;font-weight:600;box-shadow:0 8px 20px rgba(22,79,73,.12);white-space:normal;}
+#cvm-design-preview .deadline-cta-arrow{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:rgba(255,255,255,.96);color:#15594e;}
+#cvm-design-preview .deadline-cta-arrow svg{width:25px;height:25px;}
+#cvm-design-preview .deadline-trust{font-size:.78rem;line-height:1.6;margin:18px 0 0;color:#48515b;}
+#cvm-design-preview .deadline-photo{position:relative;margin:0;min-height:520px;min-width:0;overflow:hidden;}
+#cvm-design-preview .deadline-photo>img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;object-position:center;}
+#cvm-design-preview .deadline-photo figcaption{position:absolute;top:13%;left:12%;right:12%;text-align:center;font-size:clamp(.9rem,1.4vw,1.15rem);line-height:1.4;font-weight:600;color:#151d24;text-shadow:0 1px 10px rgba(255,255,255,.6);}
+#cvm-design-preview .deadline-layout>.deadline-note{grid-column:1/-1;margin:0;padding:20px 32px;border-top:1px solid rgba(51,121,108,.18);font-size:.72rem;line-height:1.6;color:#48515b;text-align:center;}
+#cvm-design-preview .deadline-close{top:16px;right:16px;width:44px;height:44px;border:0;border-radius:50%;color:#151d24;background:rgba(230,234,232,.92);box-shadow:none;z-index:2;}
+#cvm-design-preview .deadline-close svg{width:24px;height:24px;}
+@media(max-width:700px){
+ #cvm-design-preview .deadline-dialog{width:min(480px,calc(100% - 28px));max-height:calc(100dvh - 28px);border-radius:26px;background:rgba(250,252,251,.98);}
+ #cvm-design-preview .deadline-layout{display:block;}
+ #cvm-design-preview .deadline-copy{text-align:center;align-items:center;padding:58px 26px 0;}
+ #cvm-design-preview .deadline-kicker,#cvm-design-preview .deadline-photo,#cvm-design-preview .deadline-desktop-copy,#cvm-design-preview .deadline-trust{display:none;}
+ #cvm-design-preview #deadlineTitle{font-size:clamp(2.4rem,9.5vw,3.6rem);line-height:1.02;margin:0 0 22px;}
+ #cvm-design-preview #deadlineCopy{font-size:1rem;line-height:1.4;color:#48515b;max-width:24em;}
+ #cvm-design-preview .deadline-mobile-copy{display:inline;}
+ #cvm-design-preview .deadline-mobile-date{display:flex;flex-direction:column;align-items:center;margin-top:18px;}
+ #cvm-design-preview .deadline-mobile-date>img{display:block;width:120px;height:120px;object-fit:contain;}
+ #cvm-design-preview .deadline-mobile-date>p{font-size:.9rem;line-height:1.35;margin:12px 0 8px;color:#48515b;}
+ #cvm-design-preview .deadline-mobile-date>strong{font-size:clamp(1.9rem,8vw,2.6rem);letter-spacing:-.03em;line-height:1.2;color:#15594e;font-weight:750;}
+ #cvm-design-preview .deadline-cta{align-self:stretch;margin-top:28px;min-height:54px;padding:10px 18px 10px 24px;font-size:1rem;font-weight:600;gap:12px;}
+ #cvm-design-preview .deadline-cta-arrow{background:transparent;color:inherit;width:24px;height:24px;flex-basis:24px;}
+ #cvm-design-preview .deadline-cta-arrow svg{width:24px;height:24px;}
+ #cvm-design-preview .deadline-layout>.deadline-note{border:0;padding:18px 24px 28px;font-size:.65rem;line-height:1.5;}
+ #cvm-design-preview .deadline-close{width:36px;height:36px;right:14px;top:14px;}
+}

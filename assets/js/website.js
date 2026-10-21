@@ -278,3 +278,33 @@ treeToggle.addEventListener('click',()=>toggleTree(siteTree.hidden));
 document.addEventListener('click',event=>{if(!siteTree.hidden&&!siteTree.contains(event.target)&&!treeToggle.contains(event.target))toggleTree(false);});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!siteTree.hidden){event.preventDefault();toggleTree(false,true);}});
 siteTree.addEventListener('click',event=>{if(event.target.closest('a'))toggleTree(false);});
+
+/* Fristenhinweis: einmal pro Sitzung, nach 30 sichtbaren Sekunden, ohne Unterbrechung des Preischecks. */
+(()=>{
+ const popup=document.querySelector('#deadlineDialog');
+ if(!popup||Date.now()>=new Date(2027,2,2).getTime())return;
+ const storageKey='cvm-deadline-2025-shown';
+ let suppressed=false;
+ try{suppressed=sessionStorage.getItem(storageKey)==='1';}catch{}
+ if(suppressed)return;
+ const remember=()=>{suppressed=true;try{sessionStorage.setItem(storageKey,'1');}catch{}};
+ const form=document.querySelector('#priceCheck');
+ const stop=()=>{remember();clearInterval(timer);};
+ const close=()=>popup.close();
+ popup.querySelector('.deadline-close').addEventListener('click',close);
+ popup.addEventListener('click',event=>{if(event.target===popup){const r=popup.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)close();}});
+ popup.querySelector('.deadline-cta').addEventListener('click',()=>{close();const target=document.querySelector('#preis');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
+ let elapsed=0;
+ const timer=setInterval(()=>{
+  if(suppressed){clearInterval(timer);return;}
+  if(document.hidden)return;
+  elapsed+=1000;
+  if(elapsed<30000||document.querySelector('dialog[open]')||document.querySelector('#site-tree:not([hidden])'))return;
+  if(form){const r=form.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)return;}
+  if(document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'))return;
+  remember();clearInterval(timer);popup.showModal();
+ },1000);
+ form?.addEventListener('input',stop,{once:true});
+ form?.addEventListener('change',stop,{once:true});
+ form?.addEventListener('submit',stop,{once:true});
+})();

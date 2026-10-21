@@ -8902,3 +8902,10 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 #cvm-design-preview .overview-row-label{display:flex;align-items:center;gap:10px;min-width:0;flex:1 1 0;}
 #cvm-design-preview .overview-row-label>span{min-width:0;overflow-wrap:anywhere;}
 #cvm-design-preview .overview-row-icon{width:19px;height:19px;flex:0 0 19px;color:#687168;}
+
+/* Hero-Aktionen: Beschriftung mobil nicht innerhalb des Buttons umbrechen. */
+@media(max-width:759px){
+ #cvm-design-preview #top>.hero .actions{display:flex;flex-wrap:wrap;gap:12px;}
+ #cvm-design-preview #top>.hero .actions .btn{flex:1 1 max-content;min-width:0;max-width:100%;white-space:nowrap;gap:8px;padding-inline:10px;}
+ #cvm-design-preview #top>.hero .actions .hero-action-arrow{width:18px;height:18px;flex-basis:18px;}
+}

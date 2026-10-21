@@ -8505,14 +8505,14 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 @media(max-width:759px){#cvm-design-preview #top #preis .calc-shell{grid-template-columns:minmax(0,1fr);}}
 
 /* Browser review: optional price overview, centered statement, clear footer. */
-:is(.price-orientation,.request-details)>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:10px 0;list-style:none;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--cvm-role-accent,#164F49);}
-:is(.price-orientation,.request-details)>summary::-webkit-details-marker{display:none;}
-:is(.price-orientation,.request-details)>summary:focus-visible{outline:3px solid var(--cvm-role-accent,#164F49);outline-offset:4px;border-radius:4px;}
-:is(.price-orientation,.request-details)>summary:hover{text-decoration:underline;text-underline-offset:4px;}
+:is(.price-orientation,.request-details,.service-details)>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:10px 0;list-style:none;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--cvm-role-accent,#164F49);}
+:is(.price-orientation,.request-details,.service-details)>summary::-webkit-details-marker{display:none;}
+:is(.price-orientation,.request-details,.service-details)>summary:focus-visible{outline:3px solid var(--cvm-role-accent,#164F49);outline-offset:4px;border-radius:4px;}
+:is(.price-orientation,.request-details,.service-details)>summary:hover{text-decoration:underline;text-underline-offset:4px;}
 .price-disclosure-icon{position:relative;flex:0 0 16px;width:16px;height:16px;}
 .price-disclosure-icon::before,.price-disclosure-icon::after{content:"";position:absolute;top:7px;left:1px;width:14px;height:1.5px;background:currentColor;}
 .price-disclosure-icon::after{transform:rotate(90deg);}
-:is(.price-orientation,.request-details)[open] .price-disclosure-icon::after{transform:none;}
+:is(.price-orientation,.request-details,.service-details)[open] .price-disclosure-icon::after{transform:none;}
 #cvm-design-preview #top>#kanzlei .cvm-quote-statement,
 #cvm-design-preview #top>#kanzlei .cvm-quote-statement blockquote,
 #cvm-design-preview #top>#kanzlei .cvm-quote-statement small{text-align:center;}
@@ -8616,11 +8616,6 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 
 /* Vertiefende Leistungen bleiben bis zum gezielten Aufklappen verborgen. */
 #cvm-design-preview #leistungen .service-details{margin-top:18px;min-width:0;}
-#cvm-design-preview #leistungen .service-details summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;min-height:44px;padding:8px 0;color:var(--accent);font-size:.95rem;font-weight:600;}
-#cvm-design-preview #leistungen .service-details summary::-webkit-details-marker{display:none;}
-#cvm-design-preview #leistungen .service-details summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px;}
-#cvm-design-preview #leistungen .service-details-chevron{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);flex:0 0 auto;margin-right:4px;}
-#cvm-design-preview #leistungen .service-details[open] .service-details-chevron{transform:rotate(225deg);}
 #cvm-design-preview #leistungen .service-details-content{padding:8px 0 0;}
 #cvm-design-preview #leistungen .service-details ul{padding-left:1.2em;margin:0;}
 #cvm-design-preview #leistungen .service-details li{margin:0 0 14px;line-height:1.65;overflow-wrap:anywhere;}

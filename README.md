@@ -1,7 +1,9 @@
-# CVM TAX · Sage Glacier
+# CVM TAX · Sage Glacier Next Level
 
-Freigegebene Websitegestaltung vom 20.10.2026. Statische Website ohne Build. Form.taxi-Anbindung mit bestätigtem Zustelltest an info@cvm-tax.de.
+Freigegebene Website vom 21.10.2026. Statische Website ohne Build.
 
-Impressum und Datenschutz enthalten noch gekennzeichnete Entwürfe. Fehlende Angaben werden nachgereicht. Suchmaschinenindexierung bleibt bis zur Fertigstellung deaktiviert.
+Verbesserte Proportionen, App-Einblick mit Beispieldaten (Deine Angaben) und vier regulaere Ratgeberseiten. Die drei App-Erklaerschritte samt Zugangshinweis sind auf User-Wunsch vorerst entfernt und separat im lokalen Projekt archiviert.
 
-Vorheriger Stand: Archivbranch archive/website-vor-sage-glacier-2026-10-20, Commit 4d84f2a0b76ef4323f2824b04062fcf3741a6e48.
+Form.taxi-Anbindung und Preisregeln erhalten. Impressum/Datenschutz weiterhin gekennzeichnete Entwuerfe; bisherige Indexierungseinstellungen erhalten.
+
+Vorheriger Live-Stand c042d71a177f9688870350bb8841906141caf22d im Branch archive/website-vor-next-level-2026-10-21 gesichert. Artikelquellen und Builder werden im lokalen Websiteprojekt gepflegt.

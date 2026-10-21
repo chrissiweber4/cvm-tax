@@ -8685,3 +8685,6 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 /* Kleine Richtungspfeile an den beiden Aktionen im Startbereich. */
 #cvm-design-preview #top>.hero .actions .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;}
 #cvm-design-preview #top>.hero .hero-action-arrow{display:inline-block;font-family:Arial,sans-serif;font-size:1.2em;font-weight:400;line-height:1;flex-shrink:0;}
+
+/* Praezise Linienpfeile statt Schriftzeichen, unabhaengig von Systemschriften. */
+#cvm-design-preview #top>.hero .hero-action-arrow{width:22px;height:22px;display:block;flex:0 0 22px;}

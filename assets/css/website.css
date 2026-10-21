@@ -8688,3 +8688,25 @@ html[data-glass-night="true"][data-palette][data-background] body[data-page] > f
 
 /* Praezise Linienpfeile statt Schriftzeichen, unabhaengig von Systemschriften. */
 #cvm-design-preview #top>.hero .hero-action-arrow{width:22px;height:22px;display:block;flex:0 0 22px;}
+
+/* Kanzlei: bestaetigte Qualifikationen im freigegebenen Glasdesign. */
+#cvm-design-preview #top>#kanzlei .cvm-credentials-title{max-width:24em;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials-title span{display:block;color:#33796C;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;margin:32px 0 0;padding:0;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials li{display:flex;flex-direction:column;align-items:flex-start;gap:24px;min-width:0;padding:28px;border:1px solid rgba(51,121,108,.24);border-radius:14px;background:rgba(255,255,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.65);}
+#cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:56px;height:56px;flex:0 0 56px;color:#164F49;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials h3{font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.25;letter-spacing:-.025em;margin:0 0 12px;font-weight:650;color:#252a30;overflow-wrap:anywhere;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials p{font-size:1rem;line-height:1.55;margin:0;color:#48515b;overflow-wrap:anywhere;}
+#cvm-design-preview #top>#kanzlei .cvm-credentials-closing{margin:28px 0 0;padding-top:24px;border-top:1px solid rgba(51,121,108,.2);font-size:1rem;line-height:1.6;color:#48515b;}
+@media(max-width:1000px){
+ #cvm-design-preview #top>#kanzlei .cvm-credentials{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:28px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credentials li{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:center;gap:24px;padding:26px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:64px;height:64px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credentials h3{font-size:1.25rem;}
+}
+@media(max-width:400px){
+ #cvm-design-preview #top>#kanzlei .cvm-credentials li{grid-template-columns:44px minmax(0,1fr);gap:18px;padding:22px 18px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credential-icon{width:44px;height:44px;}
+ #cvm-design-preview #top>#kanzlei .cvm-credentials h3{font-size:1.1rem;}
+ #cvm-design-preview #top>#kanzlei .cvm-credentials p{font-size:.9rem;}
+}

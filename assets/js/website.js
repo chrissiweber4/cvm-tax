@@ -151,7 +151,20 @@
       submitRequest.hidden=stepName!=='review';
       next.dataset.mode=stepName==='result'?'request':'';
       next.textContent=editingFromReview?'Änderung übernehmen':stepName==='contact'?'Angaben prüfen':stepName==='special'?'Preis anzeigen':stepName==='result'?'Mit diesen Angaben anfragen':'Weiter';
-      if(moveFocus){const heading=questions[current].querySelector('h3');if(heading){heading.focus({preventScroll:true});heading.scrollIntoView({block:'start',behavior:'instant'});}}
+      if(moveFocus){
+        const heading=questions[current].querySelector('h3');
+        if(heading){
+          heading.focus({preventScroll:true});
+          // Keep visible questions in place; reveal only a heading outside the usable viewport.
+          const viewport=window.visualViewport;
+          const top=Math.max(viewport?.offsetTop||0,document.querySelector('.nav')?.getBoundingClientRect().bottom||0)+16;
+          const bottom=(viewport?.offsetTop||0)+(viewport?.height||innerHeight)-16;
+          const bounds=heading.getBoundingClientRect();
+          if(bounds.top<top||bounds.top>=bottom){
+            window.scrollBy({top:bounds.top-top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+          }
+        }
+      }
     }
 
     function configureExclusive(name,noneSelector){

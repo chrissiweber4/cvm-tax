@@ -138,3 +138,6 @@ html{scroll-behavior:smooth}body{margin:0;background:#f6faf9;color:var(--ink);fo
   .sweep-3{top:3000px;right:-85px;width:460px;height:867px;opacity:.6}
   .sweep-4{top:auto;bottom:100px;left:-90px;width:460px;height:867px;opacity:.58}
 }
+
+/* Prepared locally: price-check frame, awaiting the popup design approval. */
+.calculator{border-color:rgba(51,121,108,.24);background:rgba(220,237,230,.45)}

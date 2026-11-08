@@ -166,3 +166,17 @@ body[data-motion-studio="true"]{padding-bottom:0}
 @media(prefers-reduced-motion:reduce){.premium-frame,.premium-card-light,.premium-orbit,.premium-hero-rule,.document-sheen,.portal-sheen,.atelier-corona,.premium-bookmark,.premium-service-glyph,.premium-seal{display:none!important}.choice-label,.premium-button,.premium-reading-line{transition:none!important}}
 .hero{position:relative}.premium-hero-rule{bottom:auto}
 .navlinks{position:relative}.premium-nav-indicator{position:absolute;left:0;bottom:-8px;width:24px;height:1.5px;border-radius:1px;background:#33796c;pointer-events:none;opacity:0}.site-tree{transform-origin:top right}
+
+/* Desktop: Iconkreise wie die 50-px-Nummernkreise unter „Ein klarer Weg“. */
+@media(min-width:760px){
+ #kanzlei .premium-credential-icon{display:inline-grid;place-items:center;width:50px;height:50px;flex:0 0 50px;align-self:flex-start}
+ #kanzlei .premium-credential-icon>svg:not(.premium-seal){width:32px;height:32px}
+ #kanzlei .premium-credential-icon>.premium-seal{inset:-2px;width:54px;height:54px}
+}
+
+/* Desktop: mehr Abstand im markierten Detail-/Anfragebereich der Hauptleistung. */
+@media(min-width:760px){
+ #leistungen .service:first-child .service-details{margin-top:10px}
+ #leistungen .service:first-child .service-details>summary{padding-block:10px}
+ #leistungen .service:first-child .b-service-cta{margin-top:12px}
+}

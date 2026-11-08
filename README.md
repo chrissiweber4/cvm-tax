@@ -1,9 +1,11 @@
-# CVM TAX · Sage Glacier Next Level
+# CVM TAX Website
 
-Freigegebene Website vom 21.10.2026. Statische Website ohne Build.
+Abgestimmte lokale Website, Stand 8. November 2026. Statische Website für GitHub Pages ohne Buildschritt.
 
-Verbesserte Proportionen, App-Einblick mit Beispieldaten (Deine Angaben) und vier regulaere Ratgeberseiten. Die drei App-Erklaerschritte samt Zugangshinweis sind auf User-Wunsch vorerst entfernt und separat im lokalen Projekt archiviert.
+- Sage-Glacier-Gestaltung für Desktop und Mobilgeräte; gezielte Anpassungen nach Nutzeranmerkungen.
+- Preischeck mit unverbindlichem Gesamtpreis und persönlicher Prüfung. Vermietung intern 300 EUR je Objekt, besondere Sachverhalte einmalig 500 EUR je Anfrage; keine sichtbare Einzelpreis-Aufschlüsselung im Ergebnis.
+- Optionales Freitextfeld für andere besondere Sachverhalte und genaue Objektzahl ab zehn Objekten.
+- Impressum einschließlich Versicherungsumfang und Datenschutzhinweise auf eigenständigen Seiten und in den Startseiten-Dialogen.
+- Formularübermittlung an den bestehenden Form.taxi-Endpunkt; lokale Vorschauen verhindern echte Sendungen.
 
-Form.taxi-Anbindung und Preisregeln erhalten. Impressum/Datenschutz weiterhin gekennzeichnete Entwuerfe; bisherige Indexierungseinstellungen erhalten.
-
-Vorheriger Live-Stand c042d71a177f9688870350bb8841906141caf22d im Branch archive/website-vor-next-level-2026-10-21 gesichert. Artikelquellen und Builder werden im lokalen Websiteprojekt gepflegt.
+Die Website-Dateien liegen direkt im Repository-Stamm. GitHub Pages veröffentlicht den Branch `main`. Fachliche Arbeitsunterlagen, Policen, lokale Sicherungen und Prüfergebnisse gehören nicht in dieses öffentliche Repository. Die Artikel- und Rechtstextquellen sowie deren Generatoren werden im lokalen Websiteprojekt gepflegt.

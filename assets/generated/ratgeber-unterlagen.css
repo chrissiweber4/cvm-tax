@@ -54,7 +54,119 @@ footer.shared-footer,#cvm-design-preview footer.shared-footer{background:#164f49
 /* Quelle: assets/quality/15-gruppenfortschritt.css */
 .prep-groups h3{display:flex;justify-content:space-between;gap:12px;align-items:center}.prep-group-count{font-size:.8125rem;font-weight:500;white-space:nowrap}.prep-groups section[data-complete="true"] h3{color:#164f49;text-decoration:underline;text-underline-offset:5px;}
 /* Quelle: assets/quality/16-checklistendruck.css */
-@media print{.prep-workbench input[type="checkbox"]{border:1.5px solid #164f49;background:transparent!important}.prep-workbench input[type="checkbox"]:checked::before{border-color:#164f49}.prep-group-count{color:#164f49}.prep-workbench .prep-count{color:#164f49}}
+@media print {
+  @page { size: A4 portrait; margin: 14mm; }
+
+  html#cvm-design-preview,
+  html#cvm-design-preview[data-palette][data-background] body.reading-page[data-page] {
+    display: block !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  html#cvm-design-preview::before,
+  html#cvm-design-preview::after,
+  html#cvm-design-preview body.reading-page::before,
+  html#cvm-design-preview body.reading-page::after,
+  body.reading-page > :not(#article-main),
+  .reading-page .article-breadcrumb,
+  .reading-page .reading-map,
+  .reading-page article > :not(.prep-workbench),
+  .prep-workbench .prep-filters,
+  .prep-workbench .prep-actions,
+  .prep-workbench .prep-note {
+    display: none !important;
+    content: none !important;
+  }
+
+  html#cvm-design-preview body.reading-page #article-main,
+  html#cvm-design-preview body.reading-page #article-main .reading-shell,
+  html#cvm-design-preview body.reading-page #article-main article,
+  html#cvm-design-preview body.reading-page .prep-workbench {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    break-inside: auto;
+  }
+
+  .prep-workbench::before {
+    content: "CVM TAX · Unterlagen-Checkliste";
+    display: block;
+    margin-bottom: 8pt;
+    color: #164f49;
+    font-size: 9pt;
+    font-weight: 700;
+  }
+
+  #cvm-design-preview .prep-workbench h2 {
+    margin: 0 0 8pt !important;
+    font-size: 18pt;
+    line-height: 1.2;
+  }
+  #cvm-design-preview .prep-workbench > p {
+    margin: 0 0 8pt;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #111;
+  }
+  #cvm-design-preview .prep-workbench .prep-count {
+    margin: 8pt 0;
+    padding: 6pt 0;
+    color: #111;
+    border-color: #999;
+  }
+  #cvm-design-preview .prep-groups > section {
+    margin-top: 12pt;
+    break-inside: avoid;
+  }
+  #cvm-design-preview .prep-groups > section[hidden],
+  #cvm-design-preview .prep-groups label[hidden] { display: none !important; }
+  #cvm-design-preview .prep-groups h3 {
+    margin: 0 0 5pt;
+    color: #111;
+    font-size: 11pt;
+    line-height: 1.3;
+    break-after: avoid;
+  }
+  #cvm-design-preview .prep-groups label {
+    min-height: 0;
+    padding: 4pt 0;
+    gap: 7pt;
+    color: #111;
+    font-size: 10pt;
+    line-height: 1.4;
+    border-color: #bbb;
+    break-inside: avoid;
+  }
+  .prep-workbench input[type="checkbox"] {
+    width: 11pt;
+    height: 11pt;
+    border: 1pt solid #111;
+    background: transparent !important;
+  }
+  .prep-workbench input[type="checkbox"]:checked::before { border-color: #111; }
+  .prep-group-count { color: #111; }
+}
+
 /* Quelle: assets/quality/17-offenepunkte.css */
 .prep-groups label[hidden]{display:none!important}.prep-actions button[aria-pressed="true"]{background:#164f49;color:#f6faf9;}@media print{.prep-groups label[hidden]{display:flex!important}}
 /* Quelle: assets/quality/18-kapitelzahl.css */

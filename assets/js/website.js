@@ -304,7 +304,7 @@ function toggleTree(open,restoreFocus=false){siteTree.hidden=!open;treeToggle.se
 treeToggle.addEventListener('click',()=>toggleTree(siteTree.hidden));
 document.addEventListener('click',event=>{if(!siteTree.hidden&&!siteTree.contains(event.target)&&!treeToggle.contains(event.target))toggleTree(false);});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!siteTree.hidden){event.preventDefault();toggleTree(false,true);}});
-siteTree.addEventListener('click',event=>{if(event.target.closest('a'))toggleTree(false);});
+siteTree.addEventListener('click',event=>{if(event.target.closest('a'))requestAnimationFrame(()=>toggleTree(false));});
 
 /* Fristenhinweis ausschliesslich auf ausdruecklichen Wunsch. */
 (()=>{

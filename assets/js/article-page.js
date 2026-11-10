@@ -7,5 +7,5 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setMenu(false);toggle.focus()}});
  document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!toggle.contains(e.target))setMenu(false)});
  const sync=()=>header.classList.toggle('is-compact',scrollY>28);addEventListener('scroll',sync,{passive:true});sync();
- document.querySelector('#year').textContent=new Date().getFullYear();
+ const year=document.querySelector('#year');if(year)year.textContent=new Date().getFullYear();
 })();

@@ -1,0 +1,60 @@
+/* Quelle: assets/innovations/01-ergebnis.css */
+.question[data-step="result"] .result-heading{text-transform:none;letter-spacing:-.025em;font-size:1.75rem;line-height:1.2;color:var(--deep)}
+.result-price-surface{padding:28px;border-radius:16px;background:#164f49;color:#f6faf9;margin:24px 0}.result-case{font-size:1rem;line-height:1.5;color:#d9ebe4}.result-price-surface .price{margin:16px 0 10px;color:#f6faf9;font-variant-numeric:tabular-nums}.result-price-surface .price small{color:#d9ebe4}.result-price-caption{font-size:.875rem;color:#d9ebe4}
+.result-price-surface:has(#price[hidden]){display:none}.question[data-step="result"] #reviewNote{margin-top:0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;font-size:.9375rem}.result-next-steps{margin:24px 0 8px;padding-top:20px;border-top:1px solid rgba(51,121,108,.24)}.result-next-steps h4{font-size:.9375rem;color:var(--deep)}.result-next-steps ol{list-style:decimal;padding-left:20px;margin-top:12px;font-size:.9375rem;line-height:1.55;color:var(--muted)}.result-next-steps li+li{margin-top:8px}.question[data-step="result"]:has(.decline-note.show) .result-next-steps{display:none}body[data-price-focus]:has(.question[data-step="result"].active) .price-focus-indication{display:none}
+@media(max-width:759px){.result-price-surface{padding:22px}.question[data-step="result"] .result-heading{font-size:1.5rem}}
+
+/* Quelle: assets/innovations/04-ratgeber-hub.css */
+#ratgeber .b-section-intro{align-items:flex-start;text-align:left}#ratgeber .b-section-intro>.intro{text-align:left;margin-left:0}.guide-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.guide-filters button{min-height:44px;border:1px solid #aac9bd;background:transparent;padding:10px 16px;border-radius:999px;font:inherit;font-size:.875rem;color:#164f49}.guide-filters button[aria-pressed=true]{background:#164f49;color:white;border-color:#164f49}.guide-filter-status{font-size:.8125rem;color:#48515b;margin-top:12px}#ratgeber .article-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:16px}#ratgeber .article{padding:24px;gap:12px}#ratgeber .article .article-title{font-size:1.25rem}#ratgeber .article .article-description{display:block;font-size:.9375rem;line-height:1.5}#ratgeber .article-read{margin-top:auto}#ratgeber .premium-bookmark{display:none}#ratgeber .article-grid[data-filtered=true]{grid-template-columns:1fr}#ratgeber .article-grid[data-filtered=true] .article{grid-row:auto;min-height:240px}#ratgeber .article-grid[data-filtered=true] .article-description{display:block}@media(max-width:759px){#ratgeber .article-grid{grid-template-columns:1fr;grid-auto-rows:auto}#ratgeber .article:first-child{grid-row:auto}#ratgeber .article{padding:22px}.guide-filters button{flex-grow:1}}
+
+/* Quelle: assets/innovations/07-pruefblatt.css */
+body[data-price-focus]:has(.question[data-step="review"].active) .price-focus-indication{display:none}.question[data-step="review"] .result-summary{padding:22px;background:#164f49;color:#f6faf9;border:0;border-radius:14px}.question[data-step="review"] .result-summary strong{font-size:2rem;color:#f6faf9}.question[data-step="review"] .result-summary span{display:block;margin-top:8px;color:#d9ebe4;line-height:1.5}.question[data-step="review"] .request-details{margin-top:24px}.question[data-step="review"] .request-details>summary{min-height:52px}.question[data-step="review"] .request-summary-heading{padding-top:8px;color:#164f49}.question[data-step="review"] .request-summary>div{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:16px;padding:14px 0}.question[data-step="review"] .request-summary dd{align-items:center;gap:12px}.question[data-step="review"] .summary-edit{min-height:44px;padding:8px 12px;border:1px solid #aac8bc;border-radius:10px;background:#f6faf9;color:#164f49;font-size:.8125rem}.question[data-step="review"] .consent{padding:18px 0;border-top:1px solid #aac8bc;font-size:.9375rem}.question[data-step="review"] .consent input{width:24px;height:24px}.question[data-step="review"] .request-summary dd>span{white-space:pre-wrap}@media(max-width:759px){.question[data-step="review"] .request-summary>div{grid-template-columns:minmax(0,1fr);gap:4px}.question[data-step="review"] .request-summary dd{gap:14px}.question[data-step="review"] .request-summary dd>span{max-width:70%}}
+
+/* Quelle: assets/innovations/20-abschluss.css */
+footer.shared-footer,#cvm-design-preview footer.shared-footer{background:#164f49;color:#f6faf9;padding:52px 24px 28px;margin-top:32px;border-top:0}.shared-footer-inner{max-width:1180px;margin:auto}.shared-footer-main{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:44px}.shared-footer-brand{font-size:2rem!important;font-weight:800;letter-spacing:-.03em;min-height:44px}.shared-footer-brand span{color:#b9dace}.shared-footer-main address{font-style:normal;font-size:.9375rem;line-height:1.7;color:#d9ebe4;margin:20px 0 12px}.shared-footer-main a,.shared-footer-bottom a{display:flex;align-items:center;min-height:44px;color:#f6faf9!important;text-decoration:none;font-size:.9375rem}.shared-footer-main h2{font-size:1rem;line-height:1.4;color:#d9ebe4;margin:8px 0 16px;font-weight:600}.shared-footer-main a:hover,.shared-footer-bottom a:hover{text-decoration:underline;text-underline-offset:4px}.shared-footer-main a:focus-visible,.shared-footer-bottom a:focus-visible{outline-color:#f6faf9}.shared-footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:36px;padding-top:20px;border-top:1px solid #4d7d6e;font-size:.8125rem;color:#d9ebe4}.shared-footer-bottom nav{display:flex;gap:24px}.shared-footer-bottom a{font-size:.8125rem}@media(max-width:759px){footer.shared-footer,#cvm-design-preview footer.shared-footer{padding:36px 22px 24px}.shared-footer-main{grid-template-columns:1fr;gap:24px}.shared-footer-main>nav{padding-top:20px;border-top:1px solid #4d7d6e}.shared-footer-main h2{margin-top:0}.shared-footer-bottom{flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}.shared-footer-bottom nav{gap:20px}}
+
+/* Sichtbare Worttrennung auch innerhalb des Flex-Links. */
+.shared-footer-main a.shared-footer-brand { column-gap: .24em; white-space: nowrap; }
+
+/* Gemeinsamer Footer behaelt seine Startseitenflaeche auch im Artikel-Layout. */
+#cvm-design-preview[data-palette][data-background] body.reading-page > footer#footer.shared-footer {
+  background: #164f49 !important;
+  border-top: 0 !important;
+}
+
+/* Quelle: assets/css/browser-anpassungen-20261109.css */
+/* User-Anmerkung: bestehende Kanzleiflaeche dunkelgruen, ohne Bild. */
+#cvm-design-preview #kanzlei .b-about-shell {
+  background: #164f49;
+  color: #f6faf9;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+#cvm-design-preview #kanzlei :is(.section-title, .cvm-credentials h3) { color: #f6faf9; }
+#cvm-design-preview #kanzlei :is(.section-title span, .section-kicker) { color: #b9dace; }
+#cvm-design-preview #kanzlei :is(.intro, .cvm-credentials p, .cvm-credentials-closing) { color: #d9ebe4; }
+#cvm-design-preview #kanzlei .cvm-credentials li {
+  color: #d9ebe4;
+  background: rgba(246, 250, 249, .04);
+  border-color: rgba(246, 250, 249, .24);
+  box-shadow: none;
+}
+#cvm-design-preview #kanzlei .premium-credential-icon { color: #d9ebe4; }
+#cvm-design-preview #kanzlei .premium-credential-icon > svg:first-child { stroke: currentColor; }
+#cvm-design-preview #kanzlei .premium-seal { stroke: #8bb6a7; }
+#cvm-design-preview #kanzlei ::selection { background: #b9dace; color: #164f49; }
+
+/* Quelle: assets/quality/02-position.css */
+#site-tree a[aria-current],.navlinks a[aria-current]{background:#dcede6;color:#164f49;border-radius:10px;text-decoration:underline;text-underline-offset:5px;}
+/* Quelle: assets/quality/03-menuehoehe.css */
+.site-tree{box-sizing:border-box;max-height:calc(100dvh - var(--nav-menu-top, 100px) - 16px);overflow-y:auto;overscroll-behavior:contain;}
+/* Quelle: assets/quality/04-dialog.css */
+#legalDialog #closeDialog{width:44px!important;height:44px!important;min-width:44px;min-height:44px;cursor:pointer;}#legalDialog #closeDialog:focus-visible{outline:3px solid #164f49;outline-offset:3px;}
+/* Quelle: assets/quality/09-eingabehinweise.css */
+.field-hint{font-size:.8125rem;line-height:1.5;color:var(--muted);margin:8px 0 0;max-width:65ch;}
+/* Quelle: assets/quality/10-ergebnisangaben.css */
+.result-selection{margin:24px 0;padding:16px 0;border-block:1px solid #aac8bc}.result-selection summary{min-height:44px;cursor:pointer;font-weight:600;color:#164f49}.result-selection dl>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:10px 0;border-bottom:1px solid #c8dcd2;font-size:.875rem;line-height:1.5}.result-selection dt{color:var(--muted)}.result-selection dd{margin:0;overflow-wrap:anywhere}.result-selection p{margin-top:12px;font-size:.8125rem;color:var(--muted)}@media(max-width:480px){.result-selection dl>div{grid-template-columns:1fr;gap:2px}}
+/* Quelle: assets/quality/12-verbindung.css */
+.connection-note{padding:16px;border:1px solid #aac8bc;border-radius:12px;background:#e0efe8;color:#164f49;font-size:.9375rem;line-height:1.5;}

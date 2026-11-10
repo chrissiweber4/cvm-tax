@@ -69,6 +69,7 @@
 
     function renderResult(){
       const result=calculate();
+      document.querySelector('.result-heading').textContent=result.declined?'Für diese Auswahl bieten wir keinen Preischeck an.':'Dein Ergebnis. Deine Entscheidung.';
       document.querySelector('#price').innerHTML=`${euro(result.total)} <small>inkl. USt.</small>`;
       document.querySelector('#reviewNote').classList.toggle('show',!result.declined);
       document.querySelector('#declineNote').classList.toggle('show',result.declined);
@@ -83,7 +84,8 @@
       const error=step.querySelector('.step-error');
       error.textContent=message;error.hidden=false;
       field.setAttribute('aria-invalid','true');
-      field.setAttribute('aria-describedby',error.id);
+      const describe=node=>node.setAttribute('aria-describedby',[...new Set((node.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean).concat(error.id))].join(' '));
+      describe(field);const group=field.closest('[role="radiogroup"],[role="group"]');if(group){group.setAttribute('aria-invalid','true');describe(group);}
       field.focus();
       return false;
     }
@@ -91,7 +93,7 @@
     function clearValidation(step){
       const error=step.querySelector('.step-error');
       if(error){error.textContent='';error.hidden=true;}
-      step.querySelectorAll('[aria-invalid]').forEach(field=>{field.removeAttribute('aria-invalid');if(field.getAttribute('aria-describedby')===error?.id)field.removeAttribute('aria-describedby');});
+      step.querySelectorAll('[aria-invalid]').forEach(field=>{field.removeAttribute('aria-invalid');const remaining=(field.getAttribute('aria-describedby')||'').split(/\s+/).filter(id=>id&&id!==error?.id);if(remaining.length)field.setAttribute('aria-describedby',remaining.join(' '));else field.removeAttribute('aria-describedby');});
     }
 
     function validationIssue(step){
@@ -163,6 +165,8 @@
       progressWrap.setAttribute('aria-valuenow',String(position+1));progressWrap.setAttribute('aria-valuemax',String(activeNavigation.length));
       back.disabled=position===0;
       const stepName=questions[current].dataset.step;
+      const stepNames={year:'Steuerjahr',marital:'Familienstand',assessment:'Veranlagung',situation:'Persönliche Situation',income:'Weitere Einkünfte',rental:'Vermietungsobjekte',special:'Besondere Sachverhalte',result:'Preisindikation',contact:'Kontaktdaten',review:'Prüfen und senden'};
+      progressWrap.setAttribute('aria-valuetext',`${stepNames[stepName]||stepName}: Schritt ${position+1} von ${activeNavigation.length}`);
       if(stepName==='result')renderResult();
       if(stepName==='review')renderSummary();
       const declined=stepName==='result'&&lastCalculation?.declined;
@@ -193,6 +197,7 @@
 
     next.addEventListener('click',()=>{if(!validateStep())return;if(editingFromReview){returnToReview();return;}const activeNavigation=navigation();const position=activeNavigation.indexOf(questions[current]);if(position<activeNavigation.length-1){current=questions.indexOf(activeNavigation[position+1]);showStep(true)}});
     back.addEventListener('click',()=>{editingFromReview=false;const activeNavigation=navigation();const position=activeNavigation.indexOf(questions[current]);if(position>0){current=questions.indexOf(activeNavigation[position-1]);showStep(true)}});
+    priceCheck.querySelector('[data-decline-revise]').addEventListener('click',()=>goToStep('special'));
     configureExclusive('income','[data-none-income]');configureExclusive('special','[data-none-special]');
     priceCheck.querySelectorAll('[name="marital"]').forEach(input=>input.addEventListener('change',()=>{if(input.value==='Ledig'&&input.checked)priceCheck.querySelectorAll('[name="assessment"]').forEach(field=>field.checked=false)}));
 
@@ -208,6 +213,7 @@
       const status=document.querySelector('#formStatus');
       const endpoint=priceCheck.dataset.endpoint;
       if(['127.0.0.1','localhost','::1','[::1]'].includes(location.hostname)||location.protocol==='file:'){status.textContent='Lokale Vorschau: Es wurde keine Anfrage versendet. Deine Angaben bleiben zur Prüfung sichtbar.';status.classList.add('error');status.focus();return;}
+      if(navigator.onLine===false){status.textContent='Du bist offline. Bitte stelle die Verbindung wieder her und sende deine Anfrage danach erneut.';status.classList.add('error');status.focus();return;}
       if(endpoint!=='https://form.taxi/s/lyr0k88l'){status.textContent='Der Anfrageversand ist nicht eingerichtet. Bitte schreibe an info@cvm-tax.de.';status.classList.add('error');status.focus();return;}
       if(!requestId)requestId='CVM-'+crypto.randomUUID();
       const payload=new FormData();
@@ -300,37 +306,15 @@ document.addEventListener('click',event=>{if(!siteTree.hidden&&!siteTree.contain
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!siteTree.hidden){event.preventDefault();toggleTree(false,true);}});
 siteTree.addEventListener('click',event=>{if(event.target.closest('a'))toggleTree(false);});
 
-/* Fristenhinweis: einmal pro Sitzung, nach 20 sichtbaren Sekunden, ohne Unterbrechung des Preischecks. */
+/* Fristenhinweis ausschliesslich auf ausdruecklichen Wunsch. */
 (()=>{
- const popup=document.querySelector('#deadlineDialog');
- if(!popup||Date.now()>=new Date(2027,2,2).getTime())return;
- const storageKey='cvm-deadline-2025-shown';
- let suppressed=false;
- try{suppressed=sessionStorage.getItem(storageKey)==='1';}catch{}
- if(suppressed)return;
- const popupViewport=matchMedia('(max-width:700px)');
- const preparePopupImages=()=>{popup.querySelectorAll('img[data-dialog-src]').forEach(img=>{if(img.dataset.dialogSrc.includes('mobile')===popupViewport.matches)img.src=img.dataset.dialogSrc;});};
- popupViewport.addEventListener('change',()=>{if(popup.open)preparePopupImages();});
- const remember=()=>{suppressed=true;try{sessionStorage.setItem(storageKey,'1');}catch{}};
- const form=document.querySelector('#priceCheck');
- const stop=()=>{remember();clearInterval(timer);};
- const close=()=>popup.close();
- popup.querySelector('.deadline-close').addEventListener('click',close);
- popup.addEventListener('click',event=>{if(event.target===popup){const r=popup.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)close();}});
- popup.querySelector('.deadline-cta').addEventListener('click',()=>{close();const target=document.querySelector('#preis');target?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
- let elapsed=0;
- const timer=setInterval(()=>{
-  if(suppressed){clearInterval(timer);return;}
-  if(document.hidden)return;
-  elapsed+=1000;
-  if(elapsed<20000||document.querySelector('dialog[open]')||document.querySelector('#site-tree:not([hidden])'))return;
-  if(form){const r=form.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)return;}
-  if(document.activeElement?.matches('input,textarea,select,[contenteditable="true"]'))return;
-  remember();clearInterval(timer);
-  preparePopupImages();
-  popup.showModal();
- },1000);
- form?.addEventListener('input',stop,{once:true});
- form?.addEventListener('change',stop,{once:true});
- form?.addEventListener('submit',stop,{once:true});
+ const popup=document.querySelector('#deadlineDialog'),trigger=document.querySelector('[data-deadline-open]');if(!popup||!trigger)return;
+ const viewport=matchMedia('(max-width:700px)');
+ const images=()=>popup.querySelectorAll('img[data-dialog-src]').forEach(img=>{if(img.dataset.dialogSrc.includes('mobile')===viewport.matches)img.src=img.dataset.dialogSrc});
+ trigger.addEventListener('click',event=>{event.preventDefault();images();popup.showModal()});
+ viewport.addEventListener('change',()=>{if(popup.open)images()});
+ popup.querySelector('.deadline-close').addEventListener('click',()=>popup.close());
+ popup.addEventListener('click',event=>{if(event.target===popup){const r=popup.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)popup.close()}});
+ popup.querySelector('.deadline-cta').addEventListener('click',()=>popup.close());
+ popup.addEventListener('close',()=>trigger.focus({preventScroll:true}));
 })();

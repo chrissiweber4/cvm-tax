@@ -46,6 +46,12 @@ footer.shared-footer,#cvm-design-preview footer.shared-footer{background:#164f49
 #cvm-design-preview #kanzlei .premium-seal { stroke: #8bb6a7; }
 #cvm-design-preview #kanzlei ::selection { background: #b9dace; color: #164f49; }
 
+/* Angesprungene Abschnitte behalten den Fokus ohne browserseitigen Rahmen.
+   Die Fokusmarkierungen interaktiver Elemente bleiben davon unberuehrt. */
+#cvm-design-preview #top > section.b-section[tabindex="-1"]:focus {
+  outline: none;
+}
+
 /* Quelle: assets/quality/02-position.css */
 #site-tree a[aria-current],.navlinks a[aria-current]{background:#dcede6;color:#164f49;border-radius:10px;text-decoration:underline;text-underline-offset:5px;}
 /* Quelle: assets/quality/03-menuehoehe.css */

@@ -15,7 +15,22 @@ footer.shared-footer,#cvm-design-preview footer.shared-footer{background:#164f49
 }
 
 /* Quelle: assets/quality/02-position.css */
-#site-tree a[aria-current],.navlinks a[aria-current]{background:#dcede6;color:#164f49;border-radius:10px;text-decoration:underline;text-underline-offset:5px;}
+#site-tree a[aria-current],
+.navlinks a[aria-current] {
+  background: #dcede6;
+  color: #164f49;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.navlinks a[aria-current]::after {
+  content: none;
+}
+
+.navlinks:has(> a[aria-current]) > .premium-nav-indicator {
+  visibility: hidden;
+}
+
 /* Quelle: assets/quality/03-menuehoehe.css */
 .site-tree{box-sizing:border-box;max-height:calc(100dvh - var(--nav-menu-top, 100px) - 16px);overflow-y:auto;overscroll-behavior:contain;}
 /* Quelle: assets/quality/18-kapitelzahl.css */
